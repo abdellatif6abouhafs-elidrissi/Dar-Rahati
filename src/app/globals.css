@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-sand-50: #FDFCFA;
+  --color-sand-100: #FAF7F2;
+  --color-sand-200: #F5EDE0;
+  --color-sand-300: #EBD9C4;
+  --color-sand-400: #D4BC9A;
+  --color-sand-500: #C4A77D;
+  --color-gold-400: #FFD666;
+  --color-gold-500: #D4A84B;
+  --color-earth-700: #544737;
+  --color-earth-800: #3A3127;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-earth-800 antialiased;
+  }
+
+  /* RTL Support */
+  html[dir="rtl"] {
+    @apply font-arabic;
+  }
+
+  html[dir="ltr"] {
+    @apply font-sans;
+  }
+
+  /* Typography for Arabic */
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5,
+  html[dir="rtl"] h6 {
+    @apply font-arabic;
+    letter-spacing: 0;
+  }
+
+  /* Typography for French */
+  html[dir="ltr"] h1,
+  html[dir="ltr"] h2,
+  html[dir="ltr"] h3,
+  html[dir="ltr"] h4,
+  html[dir="ltr"] h5,
+  html[dir="ltr"] h6 {
+    @apply font-display;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-earth-700 text-white rounded-full font-medium transition-all duration-300 hover:bg-earth-800 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent border-2 border-earth-700 text-earth-700 rounded-full font-medium transition-all duration-300 hover:bg-earth-700 hover:text-white;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] text-white rounded-full font-medium transition-all duration-300 hover:bg-[#1da851] hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .gradient-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-earth-900/60 via-earth-900/20 to-transparent;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-earth-800 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-earth-600 max-w-2xl mx-auto;
+  }
+
+  /* Moroccan Pattern Background */
+  .moroccan-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A84B' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-sand-100 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-sand-400 rounded-full hover:bg-sand-500;
+  }
+
+  /* Animation utilities */
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Fade animations for page transitions */
+  .page-enter {
+    @apply opacity-0 translate-y-4;
+  }
+
+  .page-enter-active {
+    @apply opacity-100 translate-y-0 transition-all duration-500 ease-out;
+  }
+
+  /* Product image zoom effect */
+  .img-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .group:hover .img-zoom {
+    @apply scale-110;
+  }
+
+  /* Underline animation for links */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-gold-500 transition-all duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* RTL margin/padding utilities */
+  [dir="rtl"] .ms-auto {
+    margin-inline-start: auto;
+  }
+
+  [dir="rtl"] .me-auto {
+    margin-inline-end: auto;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-gold-500;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-gold-300 text-earth-800;
+}
+
+/* Smooth image loading */
+img {
+  @apply transition-opacity duration-300;
+}
+
+img[loading] {
+  @apply opacity-0;
+}
+
+img:not([loading]) {
+  @apply opacity-100;
+}
+
